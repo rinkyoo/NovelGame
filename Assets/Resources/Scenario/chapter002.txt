@@ -1,0 +1,10 @@
+#scene=001
+#bgm=odayaka
+#background=town
+#speaker=主人公
+#darkoff
+{キャプター２への移動成功しました！}
+#addchara={hiroko,smile}
+#speaker=ひろこ
+{おめでとーー}
+#nextchapter=001
