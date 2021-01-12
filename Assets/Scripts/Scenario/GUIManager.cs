@@ -135,7 +135,7 @@ public class GUIManager : MonoBehaviour
                     saveFlag = true;
                     savePanel.SetActive(true);
                 })
-                .Append(saveGroup.DOFade(0.8f,0.5f));
+                .Append(saveGroup.DOFade(0.9f,0.5f));
         panelSeq.Play();
     }
     void UpdateSaveDataButton()
@@ -177,7 +177,7 @@ public class GUIManager : MonoBehaviour
                 //saveFlag = true;
                 saveCheckPanel.SetActive(true);
             })
-            .Append(saveCheckGroup.DOFade(0.8f,0.5f));
+            .Append(saveCheckGroup.DOFade(1f,0.5f));
             panelSeq.Play();
     }
     public void YesSaveClicked()

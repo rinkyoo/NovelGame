@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Debug = UnityEngine.Debug;
 
 using UnityEngine;
 
-public class Actions
+public class Actions : MonoBehaviour
 {
     GameController gc;
     
@@ -14,10 +16,16 @@ public class Actions
         this.gc = gc;
     }
 
-    //行いたい処理などを書いていく
     public void Test()
     {
-        gc.sc.SetScene("004");
+        Debug.Log("in action test");
+    }
+
+    public void Light()
+    {
+        gc.skipProgress = true;
+        GameObject obj = Resources.Load("Prefab/Light", typeof(GameObject)) as GameObject;
+        Instantiate(obj, new Vector3(0f,1f,0f), Quaternion.identity);
     }
 
 }

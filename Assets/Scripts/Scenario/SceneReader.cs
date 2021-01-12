@@ -202,7 +202,8 @@ public class SceneReader
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
             }
-            if (!string.IsNullOrEmpty(text)) sc.SetText(text);
+            sc.SetText(text);
+            //if (!string.IsNullOrEmpty(text)) sc.SetText(text);
         }
     }
     

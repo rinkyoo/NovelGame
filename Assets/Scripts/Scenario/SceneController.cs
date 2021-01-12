@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,6 +32,8 @@ public class SceneController
     private float darknessSpeed = 1f;
     private bool isOptionsShowed;
     private bool nowDarkSeqFin = false;
+
+    string[] splitStr = { "\n" };
 
     private Scene currentScene;
     public List<Character> Characters = new List<Character>();
@@ -163,16 +166,7 @@ public class SceneController
             string temp ="";
             gui.Text.text = "";
             gui.Text.maxVisibleCharacters = 0;
-            //gui.Text.color = new Color (0, 0, 0, 1f);
-            string[] textList = tempText.Split('¥');
-            
-            for(int i=0;i<textList.Length-1;i++)
-            {
-                temp += textList[i];
-                temp += "\n";
-            }
-            temp += textList[textList.Length-1];
-            
+            temp = tempText;
             gui.AddLog(temp);
             
             if(gui.skipFlag) return;
@@ -181,8 +175,8 @@ public class SceneController
             textSeq = DOTween.Sequence();
             textSeq.AppendInterval(0.2f);
             textSeq.Append(gui.Text.DOMaxVisibleCharacters(
-                            tempText.Length + textList.Length - 1,
-                            (tempText.Length + textList.Length - 1) * messageSpeed));
+                            tempText.Length,
+                            tempText.Length * messageSpeed));
             if (gui.autoFlag){
                 textSeq.AppendInterval(1f);
             }
@@ -407,8 +401,8 @@ public class SceneController
         }
         foreach (var o in options)
         {
-            Button b = Object.Instantiate(gui.OptionButton);
-            b.transform.DOScale(20f,0.5f).SetRelative(true).SetEase(Ease.OutQuart);
+            Button b = UnityEngine.Object.Instantiate(gui.OptionButton) as Button;
+            b.transform.DOScale(10f,0.5f).SetRelative(true).SetEase(Ease.OutQuart);
             TextMeshProUGUI text = b.GetComponentInChildren<TextMeshProUGUI>();
             text.text = o.text;
             b.onClick.AddListener(() => onClickedOption(o.nextScene));
@@ -422,7 +416,7 @@ public class SceneController
         isOptionsShowed = false;
         foreach (Transform t in gui.ButtonPanel)
         {
-            Object.Destroy(t.gameObject);
+            UnityEngine.Object.Destroy(t.gameObject);
         }
     }
     

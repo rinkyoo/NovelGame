@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
         {"chara7",6},
         {"chara8",7},
     };
+
+    public bool skipProgress = false;
     
     void Awake()
     {
@@ -52,6 +54,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (skipProgress) return;
         sc.WaitClick();
         sc.SetComponents();
     }

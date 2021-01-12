@@ -12,6 +12,7 @@ public class PlaySaveDataHolder : MonoBehaviour
     
     void Awake()
     {
+        //オブジェクトが重複しないように
         if(!created){
             DontDestroyOnLoad(this);
             created = true;
