@@ -200,14 +200,7 @@ public class SceneController
         Sprite sprite = (Sprite)Resources.Load("Image/Background/"+name,typeof(Sprite));
         background.sprite = sprite;
     }
-/*
-    public void SetCharactor(string name)
-    {
-        Characters.ForEach(c => c.Destroy());
-        Characters = new List<Character>();
-        AddCharactor(name);
-    }
-*/
+
     public void AddCharacter(string name,string imageID)
     {
         if (Characters.Exists(c => c.Name == name)) return;
@@ -258,6 +251,7 @@ public class SceneController
         
         foreach (var chara in charas)
         {
+            if (Characters.Exists(c => c.Name == chara.name)) continue;
             var characterObject = UnityEngine.Object.Instantiate(prefab);
             characterObject.transform.parent = gui.BackCanvas.transform;
             var character = characterObject.GetComponent<Character>();
