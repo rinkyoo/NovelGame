@@ -52,7 +52,6 @@ public class SceneReader
                 }
                 else if (line.Contains("lumpchara"))
                 {
-                    //sc.RmCharacter("all");
                     var charas = new List<(string, string)>();
                     while (true)
                     {
@@ -160,7 +159,6 @@ public class SceneReader
                 }
                 else if (line == "darkoff")
                 {
-                    //if (sc.DarkSeqPlaying()) continue;
                     sc.DarkOff();
                     s.GoNextLine();
                     return;
@@ -203,7 +201,6 @@ public class SceneReader
                 line = s.GetCurrentLine();
             }
             sc.SetText(text);
-            //if (!string.IsNullOrEmpty(text)) sc.SetText(text);
         }
     }
     

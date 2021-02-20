@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class GameController : MonoBehaviour
 {
     //セーブデータ関連***************
-    [SerializeField] private GameObject SaveDataManager;
+    [SerializeField] private GameObject SaveDataManager = default;
     private SaveDataManager sdManager;
     private PlaySaveDataHolder psdHolder;
     private string SaveFilePath;
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
     public void ChangeChapter(string id)
     {
         sc.LoadChapter(id);
-        sc.SetScene("001"); //chapterの最初は001の前提処理
+        sc.SetScene("001"); //chapterの最初のシーンは001の前提処理
     }
     
     public void SetNowData(SaveData setData)

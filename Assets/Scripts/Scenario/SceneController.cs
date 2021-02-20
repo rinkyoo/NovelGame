@@ -33,8 +33,6 @@ public class SceneController
     private bool isOptionsShowed;
     private bool nowDarkSeqFin = false;
 
-    string[] splitStr = { "\n" };
-
     private Scene currentScene;
     public List<Character> Characters = new List<Character>();
     
@@ -63,7 +61,7 @@ public class SceneController
     {
         if (currentScene != null)
         {
-            
+            //暗転、明転時はクリック無視
             if (darkSeq.IsPlaying())
             {
                 return;
@@ -75,6 +73,7 @@ public class SceneController
                 SetNextProcess();
                 return;
             }
+            //auto、skip機能の時は自動的に次のシナリオを読み込む
             if (gui.autoFlag || gui.skipFlag)
             {
                 SetNextProcess();
@@ -84,12 +83,14 @@ public class SceneController
             if (Input.GetMouseButtonDown(0))
             {
                 if (gui.ScrollView.gameObject.activeSelf) return;
+                //UI関係を非表示にしてるときは、全部表示させるだけ
                 if (!gui.UIFlag())
                 {
                     gui.UIAppear();
                     return;
                 }
                 
+                //クリックを無視するオブジェクトの判定
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -103,6 +104,7 @@ public class SceneController
                     }
                 }
 
+                //クリックでシナリオを進める 
                 if (!isOptionsShowed && !imageSeq.IsPlaying() && !gui.TouchSkipFlag())
                 {
                     SetNextProcess();
@@ -200,7 +202,7 @@ public class SceneController
         Sprite sprite = (Sprite)Resources.Load("Image/Background/"+name,typeof(Sprite));
         background.sprite = sprite;
     }
-
+    //キャラ追加
     public void AddCharacter(string name,string imageID)
     {
         if (Characters.Exists(c => c.Name == name)) return;
@@ -221,7 +223,6 @@ public class SceneController
             var pos = gui.MainCamera.ScreenToWorldPoint(Vector3.zero);
             var pos2 = gui.MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             var posWidth = pos2.x - pos.x;
-            //var left = pos.x + (posWidth * (i + 1) / (Characters.Count + 1));
             var left = pos.x + ( posWidth / (Characters.Count+1) * (i+1) );
             var cpos = new Vector3(left, gui.MainCamera.transform.position.y, 0);
             //新しく登場する人
@@ -244,7 +245,7 @@ public class SceneController
             imageSeq.Play();
         }
     }
-    
+    //キャラ同時追加
     public void SetLumpChara(List<(string name, string imageID)> charas)
     {
         var prefab = Resources.Load("Charactor") as GameObject;
@@ -266,7 +267,6 @@ public class SceneController
             var pos2 = gui.MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             var posWidth = pos2.x - pos.x;
             var left = pos.x + (posWidth * (i + 1) / (Characters.Count + 1));
-            //var cpos = new Vector3(left, gui.MainCamera.transform.position.y, 0);
             var cpos = new Vector3(left, gui.MainCamera.transform.position.y, 0);
             Characters[i].transform.position = cpos;
             Characters[i].transform.localPosition -= new Vector3(0f,60f,0f);
@@ -276,7 +276,7 @@ public class SceneController
             Characters[i].Appear();
         }
     }
-    
+    //キャラの入れ替え
     public void ReplaceChara(string name,string setName,string imageID)
     {
         if (Characters.Exists(c => c.Name == setName)) return;
@@ -300,7 +300,7 @@ public class SceneController
             }
         }
     }
-    
+    //キャラを消す
     public void RmCharacter(string name)
     {
         
@@ -349,13 +349,13 @@ public class SceneController
         }
         
     }
-
+    //キャラの画像変更
     public void SetImage(string name, string imageID)
     {
         var character = Characters.Find(c => c.Name == name);
         character.SetImage(imageID);
     }
-    
+    //アイコンのみの表示（現状はテキストウィンドウの左に小さく表示）
     public void SetSImage(string name, string imageID)
     {
         if(name == "none"){
@@ -384,6 +384,7 @@ public class SceneController
         gc.CharaRelease(name);
     }
 
+    //選択肢ボタンの表示
     public void SetOptions(List<(string text, string nextScene)> options)
     {
         isOptionsShowed = true;

@@ -1,10 +1,12 @@
 #scene=001
 #bgm=odayaka
 #background=town
-#speaker=主人公
-#darkoff
-{キャプター２への移動成功しました！}
-#addchara={hiroko,smile}
 #speaker=ひろこ
-{おめでとーー}
+#addchara={hiroko,normal}
+#darkoff
+{別のシナリオファイルへの移動成功！}
+#addchara={hiroko,smile}
+{さっきのシナリオファイルに戻ります。<br>
+ループする感じですね}
+#rmchara=all
 #nextchapter=001

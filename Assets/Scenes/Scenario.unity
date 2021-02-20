@@ -2712,7 +2712,7 @@ GameObject:
   - component: {fileID: 353767504}
   m_Layer: 5
   m_Name: SaveCheckPanel
-  m_TagString: Untagged
+  m_TagString: SkipTap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

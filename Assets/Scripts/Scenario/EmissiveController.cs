@@ -9,7 +9,7 @@ public class EmissiveController : MonoBehaviour
 
     private float defIntensity = 0;
 
-    const float variation = 0.03f;
+    const float variation = 0.02f;
 
     void Start()
     {
@@ -30,7 +30,6 @@ public class EmissiveController : MonoBehaviour
 
     void OnDestroy()
     {
-        //GameObject.Find("GameController").GetComponent<GameController>().sc.SetNextProcess();
         GameObject.Find("GameController").GetComponent<GameController>().skipProgress = false; ;
     }
 }

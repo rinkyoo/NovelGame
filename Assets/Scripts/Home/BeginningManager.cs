@@ -34,11 +34,10 @@ public class BeginningManager : MonoBehaviour
     {
         for (int i=0;i<dataNum;i++)
         {
-            string temp = "セーブデータ" + (i+1).ToString() + " : ";
+            string temp = "セーブデータ" + (i+1).ToString() + "\n";
             temp += sdManager.GetChapter(i);
-            temp += "章/";
+            temp += "章/シーン";
             temp += sdManager.GetScene(i);
-            temp += "話";
             DataButton[i].GetComponentInChildren<Text>().text = temp;
         }
     }
@@ -90,7 +89,6 @@ public class BeginningManager : MonoBehaviour
     {
         
         playSaveData.SetPlaySaveData(new SaveData(),dataNumber);
-        //sdManager.SetSaveData(new SaveData(),dataNumber);
         
         Sequence panelSeq = DOTween.Sequence();
         panelSeq.AppendCallback(()=>

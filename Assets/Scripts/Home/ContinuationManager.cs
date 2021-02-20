@@ -16,38 +16,29 @@ public class ContinuationManager : MonoBehaviour
     private CanvasGroup contiGroup;
     public GameObject checkPanel;
     private CanvasGroup checkGroup;
-    //public Button yesButton;
     
     public Button[] DataButton = new Button[dataNum];
     
-    // Start is called before the first frame update
     void Awake()
     {
         sdManager = GameObject.Find("SaveDataManager").GetComponent<SaveDataManager>();
         playSaveData = GameObject.Find("PlaySaveDataHolder").GetComponent<PlaySaveDataHolder>();
         contiGroup = contiPanel.GetComponent<CanvasGroup>();
-        checkGroup = checkPanel.GetComponent<CanvasGroup>();
-        
-        //sdManager.DoLoad();
+        checkGroup = checkPanel.GetComponent<CanvasGroup>();    
     }
     
     void Start()
     {
         for (int i=0;i<dataNum;i++)
         {
-            string temp = "セーブデータ" + (i+1).ToString() + " : ";
+            string temp = "セーブデータ" + (i+1).ToString() + "\n";
             temp += sdManager.GetChapter(i);
-            temp += "章/";
+            temp += "章/シーン";
             temp += sdManager.GetScene(i);
-            temp += "話";
             DataButton[i].GetComponentInChildren<Text>().text = temp;
         }
         
         playSaveData.SetCommonSaveData(sdManager.GetCommonSaveData());
-        
-        //sdManager.DoLoad();
-        //this.SetButtonText();
-        //GameObject.Find("BeginningManager").GetComponent<BeginningManager>().SetButtonText();
     }
     
     public void ContiClicked()
@@ -123,17 +114,6 @@ public class ContinuationManager : MonoBehaviour
                 });
         panelSeq.Play();
     }
-    /*
-    private void GetSaveData(Scene next, LoadSceneMode mode)
-    {
-        
-        var gc = GameObject.Find("GameController").GetComponent<GameController>();
-        gc.SetChapter(load.GetChapter(1));
-        gc.SetScene(load.GetScene(1));
-        
-        SceneManager.sceneLoaded -= GetSaveData;
-    }
-    */
     
     public void YesClicked()
     {

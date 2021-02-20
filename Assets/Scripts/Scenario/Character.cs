@@ -45,7 +45,6 @@ public class Character : MonoBehaviour {
     public void SetImage(string imageID)
     {
         charactorImage.sprite = sprites[imageID];
-        //FadeIn();
     }
 
     public void Appear()

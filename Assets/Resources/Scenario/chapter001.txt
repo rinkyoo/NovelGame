@@ -1,12 +1,13 @@
 #scene=001
 #bgm=odayaka
 #background=town
-{シナリオゲームのテスト用シナリオです！}
-#speaker=ひろこ
+#speaker=
 #darkoff
+{シナリオゲームのテスト用シナリオです！}
 #addchara={hiroko,normal}
+#speaker=ひろこ
 {こんにちは！ひろこの追加成功}
-{１行目です（改行のテスト<br>
+{１行目です（改行のテスト）<br>
 ２行目です}
 {選択肢機能のテストします！<br>
 海と駅どっちに行きたい？}
@@ -58,7 +59,7 @@
 #addchara={hiroko,normal}
 #speaker=ひろこ
 #darkoff
-{キャラを追加してみます。}
+{追加キャラのテスト！}
 #simage=aya,normal_up
 #speaker=あや
 {私が登場します！}
@@ -66,9 +67,10 @@
 #addchara={aya,normal}
 {こんにちはーー！}
 #speaker=ひろこ
-{今度はあやを私の分身に入れ替えます}
+{今度はあやを私の分身に入れ替えます（キャラ入れ替えのテスト）}
 #speaker=あや
 #image_aya=aseri
+#shake=aya,false
 {えっ？もう？？？}
 #replace_aya=hiroko2,smile
 #speaker=ひろこ２
@@ -86,3 +88,6 @@
 {ひろこ３を消しました}
 {次は全員同時に消します！}
 #rmchara=all
+#speaker=
+{次の章へ移動します！（別のシナリオ用ファイルへの移動テスト）}
+#nextchapter=002
