@@ -28,7 +28,6 @@ public class SceneController
     private Sequence shakeSeq = DOTween.Sequence();
     Tweener tweener;
     private float messageSpeed = 0.05f;
-    private float fadeSpeed = 2f;
     private float darknessSpeed = 1f;
     private bool isOptionsShowed;
     private bool nowDarkSeqFin = false;

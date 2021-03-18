@@ -9,14 +9,12 @@ public class SaveDataManager : MonoBehaviour
     const int dataNum = 8;
     private string SaveFilePath;
     private SaveData[] saveData = new SaveData[dataNum];
-    private CommonSaveData commonSaveData;// = new CommonSaveData();
+    private CommonSaveData commonSaveData;
     
     private SaveManager saveManager;
     
     void Awake()
     {
-        //SaveFilePath = Application.persistentDataPath + "/SavedData.save";
-        //saveData = new SaveData();
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
         DoLoad();
     }
@@ -36,11 +34,9 @@ public class SaveDataManager : MonoBehaviour
                 {
                     // 指定したファイルストリームをSaveDataクラスにデシリアライズ。
                     saveData[i] = (SaveData)bf.Deserialize(file);
-                    //Debug.Log("data "+i+":"+saveData[i].chapter+":"+saveData[i].scene);
                 }
                 finally
                 {
-                    // ファイル操作には明示的な破棄が必要です。Closeを忘れないように。
                     if (file != null)
                         file.Close();
                 }
@@ -66,7 +62,6 @@ public class SaveDataManager : MonoBehaviour
             }
             finally
             {
-                // ファイル操作には明示的な破棄が必要です。Closeを忘れないように。
                 if (file != null)
                     file.Close();
             }

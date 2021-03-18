@@ -8,17 +8,6 @@ public class ParticleManager : MonoBehaviour
     public ParticleSystem fallParticle;
     private Material tempMaterial;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        fallParticle.Stop();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void SetFallParticle(string material)
     {

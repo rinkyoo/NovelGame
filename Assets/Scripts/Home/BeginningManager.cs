@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 
+//シナリオを最初から始める際の処理
 public class BeginningManager : MonoBehaviour
 {
     const int dataNum = 8;
@@ -18,16 +19,13 @@ public class BeginningManager : MonoBehaviour
     private CanvasGroup checkGroup;
     
     public Button[] DataButton = new Button[dataNum];
-    
-    private int resetNumber;
-    
+        
     void Awake()
     {
         sdManager = GameObject.Find("SaveDataManager").GetComponent<SaveDataManager>();
         playSaveData = GameObject.Find("PlaySaveDataHolder").GetComponent<PlaySaveDataHolder>();
         beginGroup = beginPanel.GetComponent<CanvasGroup>();
         checkGroup = checkPanel.GetComponent<CanvasGroup>();
-        resetNumber = -1;
     }
     
     void Start()
